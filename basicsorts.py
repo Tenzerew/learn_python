@@ -21,20 +21,22 @@ def BubbleSort(array):
         swapped = True
     return array
 
+
 #QuickSort:
+
 
 def QuickSort(array):
     if len(array) <= 1:
         return array
     else:
         pivot = choice(array)
-        PivotArr = [] 
+        PivotArr = []
         LeftArr = []
         RightArr = []
         for value in array:
             if value < pivot:
                 LeftArr.append(value)
-            elif value < pivot:
+            elif value > pivot:
                 RightArr.append(value)
             else:
                 PivotArr.append(value)
@@ -42,6 +44,21 @@ def QuickSort(array):
         return QuickSort(LeftArr) + PivotArr + QuickSort(RightArr)
 
 
+#InsertionSort:
 
-print("BubbleSort: "+ BubbleSort(l1st))
-print("QuickSort: "+  QuickSort(l1st))
+
+def InsertionSort(array):
+    for value in range(1, len(array)):
+        IndVal = array[value]
+        j = value - 1
+        while j >= 0 and array[j] > IndVal:
+            array[j + 1] = array[j]
+            j -= 1
+        array[j + 1] = IndVal
+
+    return array
+
+
+print("BubbleSort:", BubbleSort(l1st))
+print("QuickSort:", QuickSort(l1st))
+print("InsertionSort:", InsertionSort(l1st))
