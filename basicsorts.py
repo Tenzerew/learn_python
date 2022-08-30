@@ -1,9 +1,14 @@
-from random import randint
+from random import randint, choice
 
-#bubble sort
+l1st = []
+
+for _ in range(1, 15):
+    l1st.append(randint(1, 100))
+
+#bubbleSort:
 
 
-def bubblesort(array):
+def BubbleSort(array):
     swapped = False
     for i in range(len(array) - 1):
         for j in range(len(array) - i - 1):
@@ -16,10 +21,27 @@ def bubblesort(array):
         swapped = True
     return array
 
+#QuickSort:
 
-l1st = []
+def QuickSort(array):
+    if len(array) <= 1:
+        return array
+    else:
+        pivot = choice(array)
+        PivotArr = [] 
+        LeftArr = []
+        RightArr = []
+        for value in array:
+            if value < pivot:
+                LeftArr.append(value)
+            elif value < pivot:
+                RightArr.append(value)
+            else:
+                PivotArr.append(value)
 
-for _ in range(1, 15):
-    l1st.append(randint(1, 100))
+        return QuickSort(LeftArr) + PivotArr + QuickSort(RightArr)
 
-print(bubblesort(l1st))
+
+
+print("BubbleSort: "+ BubbleSort(l1st))
+print("QuickSort: "+  QuickSort(l1st))
