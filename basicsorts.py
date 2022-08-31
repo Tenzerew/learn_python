@@ -59,6 +59,19 @@ def InsertionSort(array):
     return array
 
 
+#SelectionSort
+
+def SelectionSort(array):
+    for minimum in range(0, len(array) - 1):
+        MinVal = minimum
+        for value in range(MinVal + 1, len(array)):
+            if array[value] < array[minimum]:
+                MinVal = value
+        array[minimum], array[MinVal] = array[MinVal], array[minimum]
+    return array  
+
+
 print("BubbleSort:", BubbleSort(l1st))
 print("QuickSort:", QuickSort(l1st))
 print("InsertionSort:", InsertionSort(l1st))
+print("SelectionSort:", SelectionSort(l1st))
