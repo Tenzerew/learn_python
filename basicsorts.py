@@ -61,6 +61,7 @@ def InsertionSort(array):
 
 #SelectionSort
 
+
 def SelectionSort(array):
     for minimum in range(0, len(array) - 1):
         MinVal = minimum
@@ -68,10 +69,43 @@ def SelectionSort(array):
             if array[value] < array[minimum]:
                 MinVal = value
         array[minimum], array[MinVal] = array[MinVal], array[minimum]
-    return array  
+    return array
+
+
+#MergeSort:
+
+
+def Merge(left_array, right_array):
+    i = 0
+    j = 0
+    result = []
+    while i < len(left_array) and j < len(right_array):
+        if left_array[i] < right_array[j]:
+            result.append(left_array[i])
+            i += 1
+        else:
+            result.append(right_array[j])
+            j += 1
+    if i < len(left_array):
+        result += left_array[i:]
+    if j < len(right_array):
+        result += right_array[j:]
+    return result
+
+
+def MergeSort(array):
+    if len(array) <= 1:
+        return array
+    else:
+        middle = len(array) // 2
+        left_array = MergeSort(array[:middle])
+        right_array = MergeSort(array[middle:])
+        return Merge(left_array, right_array)
+
 
 
 print("BubbleSort:", BubbleSort(l1st))
 print("QuickSort:", QuickSort(l1st))
 print("InsertionSort:", InsertionSort(l1st))
 print("SelectionSort:", SelectionSort(l1st))
+print("MergeSort:", MergeSort(l1st))
