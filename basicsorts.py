@@ -103,9 +103,30 @@ def MergeSort(array):
         return Merge(left_array, right_array)
 
 
+#ShakerSort:
+
+
+def ShakerSort(array):
+    left = 0
+    right = len(array) - 1
+    while left <= right:
+        for value in range(left, right, +1):
+            if array[value] > array[value + 1]:
+                array[value], array[value + 1] = array[value + 1], array[value]
+        right -= 1
+
+        for value in range(right, left, -1):
+            if array[value - 1] > array[value]:
+                array[value], array[value - 1] = array[value - 1], array[value]
+
+        left += 1
+
+    return array
+
 
 print("BubbleSort:", BubbleSort(l1st))
 print("QuickSort:", QuickSort(l1st))
 print("InsertionSort:", InsertionSort(l1st))
 print("SelectionSort:", SelectionSort(l1st))
 print("MergeSort:", MergeSort(l1st))
+print("ShakerSort:", ShakerSort(l1st))
