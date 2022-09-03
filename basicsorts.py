@@ -135,7 +135,7 @@ def ShellSort(array):
             position = value
             while position >= gap and array[position - gap] > current_value:
                 array[position] = array[position - gap]
-                position = gap
+                position -= gap
                 array[position] = current_value
         gap //= 2
     return array
