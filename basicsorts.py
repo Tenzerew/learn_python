@@ -124,9 +124,27 @@ def ShakerSort(array):
     return array
 
 
+#ShellSort:
+
+
+def ShellSort(array):
+    gap = len(array) // 2
+    while gap >= 0:
+        for value in range(gap, len(array)):
+            current_value = array[value]
+            position = value
+            while position >= gap and array[position - gap] > current_value:
+                array[position] = array[position - gap]
+                position = gap
+                array[position] = current_value
+        gap //= 2
+    return array
+
+
 print("BubbleSort:", BubbleSort(l1st))
 print("QuickSort:", QuickSort(l1st))
 print("InsertionSort:", InsertionSort(l1st))
 print("SelectionSort:", SelectionSort(l1st))
 print("MergeSort:", MergeSort(l1st))
 print("ShakerSort:", ShakerSort(l1st))
+print("ShellSort:", ShellSort(l1st))
